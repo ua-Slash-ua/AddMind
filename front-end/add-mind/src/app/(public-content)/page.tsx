@@ -1,7 +1,7 @@
-export default function HomePage() {
+import HomePage from "@/public-part/components/pages/home/HomePage";
+
+export default function BasePage() {
     return (
-        <h1>
-            Home Page
-        </h1>
+            <HomePage />
     )
 }

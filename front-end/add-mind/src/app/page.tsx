@@ -1,8 +1,13 @@
-import HomePage from "@/app/(public-content)/page";
+import BasePage from "@/app/(public-content)/page";
+import Header from "@/public-part/components/header/Header";
 
 export default function Home() {
     return (
-        <HomePage/>
+        <>
+
+            <BasePage />
+    </>
+
 
     )
 }
