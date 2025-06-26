@@ -1,4 +1,45 @@
-import { Injectable } from '@nestjs/common';
+import {Injectable} from '@nestjs/common';
+import {TypeUser} from "../types/user";
+import {validateUserLogin} from "../validate/user/validateUserLogin";
+import {PrismaService} from "../prisma/prisma.service";
+import {IResponse} from "../interfaces/response";
+
 
 @Injectable()
-export class UserService {}
+export class UserService {
+    constructor(private prisma: PrismaService) {
+    }
+
+    async createUser(userData: TypeUser): Promise<IResponse> {
+        if (!validateUserLogin(userData)) {
+            return {
+                status: 'error',
+                message: 'Користувач з таким логіном уже існує!'
+            }
+        }
+        if (userData.id || userData.update_dt) {
+            return {
+                status: 'error',
+                message: 'id && update_dt при створенні не передається'
+            }
+        }
+        let currentTime = Date.now();
+        userData.create_dt = new Date(currentTime);
+
+        const result = await this.prisma.modelUser.create(
+            {
+                data: userData
+            }
+        );
+        if(!result){
+            return {
+                status: 'error',
+                message: 'Не вдалося додати користувача в БД!',
+            }
+        }
+        return {
+            status: 'success',
+            message: `Користувача з id ${result.id} додано!`,
+        }
+    }
+}
