@@ -42,4 +42,20 @@ export class UserService {
             message: `Користувача з id ${result.id} додано!`,
         }
     }
+
+    async getAll():Promise<IResponse>{
+        const result = await this.prisma.modelUser.findMany();
+        if (!result){
+            return {
+                status: 'error',
+                message: 'Не вдалося отримати користувачаів в БД!',
+            }
+
+        }
+        return {
+            status: 'success',
+            message: 'Користувачів отримано!',
+            data: result
+        }
+    }
 }
