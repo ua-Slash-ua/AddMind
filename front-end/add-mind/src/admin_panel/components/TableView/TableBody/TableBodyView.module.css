@@ -1,10 +1,11 @@
-.table_head_container {
+.table_body_container {
     width: 100%;
     max-height: 2vw;
-    background-color: #4e4e4e;
+    background-color: #ffffff;
 }
 
-.table_head_container th {
-    border: 0.1vw solid white;
-
+.table_body_container td {
+    border: 0.1vw solid #000000;
+    color: black;
+    padding: 0 2vw;
 }
