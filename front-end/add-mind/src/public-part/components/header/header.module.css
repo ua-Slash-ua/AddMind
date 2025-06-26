@@ -1,0 +1,12 @@
+.icon_container{
+    width: 10%;
+    height: 7vh;
+}
+.header{
+    width: 100%;
+    height: 7vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}

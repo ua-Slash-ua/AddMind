@@ -1,0 +1,10 @@
+
+
+.navigations{
+    width:90%;
+    height: 7vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}

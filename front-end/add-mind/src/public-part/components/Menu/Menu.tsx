@@ -1,7 +1,7 @@
 'use client'
 
 import {usePathname} from "next/navigation";
-import './menu.css'
+import styles  from './menu.module.css'
 import {dataMenu} from "@/public-part/components/Menu/menu.data";
 import MenuItem from "@/public-part/components/Menu/MenuItem/MenuItem";
 
@@ -9,7 +9,7 @@ import MenuItem from "@/public-part/components/Menu/MenuItem/MenuItem";
 export default function Menu() {
     const pathname = usePathname()
     return (
-        <nav>
+        <nav className={styles.navigations}>
             {dataMenu.map(menu=><MenuItem
                 key={menu.href}
                 href={menu.href}

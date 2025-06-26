@@ -1,0 +1,83 @@
+<svg width="300" height="80" viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="nodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4CAF50;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#45a049;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2c3e50;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#34495e;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle for logo mark -->
+  <circle cx="40" cy="40" r="35" fill="url(#brainGradient)" opacity="0.1"/>
+  
+  <!-- Brain/Mind icon -->
+  <g transform="translate(15, 15)">
+    <!-- Left brain hemisphere -->
+    <path d="M15 10 C5 10, 0 15, 0 25 C0 35, 5 45, 15 45 L25 45 L25 35 C25 25, 20 15, 15 15 Z" 
+          fill="url(#brainGradient)" opacity="0.8"/>
+    
+    <!-- Right brain hemisphere -->
+    <path d="M35 10 C45 10, 50 15, 50 25 C50 35, 45 45, 35 45 L25 45 L25 35 C25 25, 30 15, 35 15 Z" 
+          fill="url(#brainGradient)"/>
+    
+    <!-- Neural connections -->
+    <circle cx="12" cy="20" r="2" fill="#fff" opacity="0.9"/>
+    <circle cx="38" cy="20" r="2" fill="#fff" opacity="0.9"/>
+    <circle cx="25" cy="30" r="2" fill="#fff" opacity="0.9"/>
+    <circle cx="15" cy="35" r="1.5" fill="#fff" opacity="0.7"/>
+    <circle cx="35" cy="35" r="1.5" fill="#fff" opacity="0.7"/>
+    
+    <!-- Connection lines -->
+    <line x1="12" y1="20" x2="25" y2="30" stroke="#fff" stroke-width="1" opacity="0.6"/>
+    <line x1="38" y1="20" x2="25" y2="30" stroke="#fff" stroke-width="1" opacity="0.6"/>
+    <line x1="25" y1="30" x2="15" y2="35" stroke="#fff" stroke-width="0.8" opacity="0.5"/>
+    <line x1="25" y1="30" x2="35" y2="35" stroke="#fff" stroke-width="0.8" opacity="0.5"/>
+  </g>
+  
+  <!-- Plus symbol for "add" -->
+  <g transform="translate(55, 25)">
+    <circle cx="15" cy="15" r="12" fill="url(#nodeGradient)" opacity="0.2"/>
+    <rect x="12" y="8" width="6" height="14" fill="url(#nodeGradient)" rx="1"/>
+    <rect x="8" y="12" width="14" height="6" fill="url(#nodeGradient)" rx="1"/>
+  </g>
+  
+  <!-- Text: addMind -->
+  <text x="95" y="35" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="url(#textGradient)">
+    add
+  </text>
+  <text x="95" y="55" font-family="Arial, sans-serif" font-size="24" font-weight="300" fill="url(#textGradient)">
+    Mind
+  </text>
+  
+  <!-- Subtitle: CMS -->
+  <text x="190" y="35" font-family="Arial, sans-serif" font-size="12" font-weight="500" fill="#7f8c8d">
+    CMS
+  </text>
+  
+  <!-- Tech stack indicators -->
+  <g transform="translate(190, 45)">
+    <!-- Next.js indicator -->
+    <rect x="0" y="0" width="30" height="12" fill="#000" rx="2"/>
+    <text x="15" y="8" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#fff" text-anchor="middle">
+      NEXT
+    </text>
+    
+    <!-- Nest.js indicator -->
+    <rect x="35" y="0" width="30" height="12" fill="#e0234e" rx="2"/>
+    <text x="50" y="8" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#fff" text-anchor="middle">
+      NEST
+    </text>
+  </g>
+  
+  <!-- Decorative elements -->
+  <circle cx="280" cy="20" r="2" fill="url(#brainGradient)" opacity="0.3"/>
+  <circle cx="275" cy="30" r="1.5" fill="url(#nodeGradient)" opacity="0.4"/>
+  <circle cx="285" cy="35" r="1" fill="url(#brainGradient)" opacity="0.5"/>
+</svg>
