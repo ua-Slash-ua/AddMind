@@ -4,6 +4,7 @@ import {userType} from "@/admin_panel/config/users.config";
 import {formatValueAuto} from "@/admin_panel/assets/formatValue";
 import BtnRemove from "@/admin_panel/components/layout/button/BtnRemove/BtnRemove";
 import BtnEdit from "@/admin_panel/components/layout/button/BtnEdit/BtnEdit";
+import {removeUser} from "@/admin_panel/api/user/remove";
 
 
 interface TableHeadViewProps {
@@ -13,7 +14,6 @@ interface TableHeadViewProps {
 
 export default async function TableBodyView({tableKey, head}: TableHeadViewProps) {
     const response = await getAllUsers();
-
 
     return (
         <tbody className={styles.table_body_container}>
@@ -25,8 +25,8 @@ export default async function TableBodyView({tableKey, head}: TableHeadViewProps
                     </td>
                 ))}
                 <td>
-                    <BtnRemove/>
                     <BtnEdit/>
+                    <BtnRemove key="btnRemove" func={removeUser} id={user.id} />
                 </td>
             </tr>
         ))}
