@@ -43,7 +43,7 @@ export class UserService {
         }
     }
 
-    async getAll():Promise<IResponse>{
+    async getAllUser():Promise<IResponse>{
         const result = await this.prisma.modelUser.findMany();
         if (!result){
             return {
@@ -55,6 +55,27 @@ export class UserService {
         return {
             status: 'success',
             message: 'Користувачів отримано!',
+            data: result
+        }
+    }
+
+    async removeUser(userId:number):Promise<IResponse>{
+        const result = await this.prisma.modelUser.delete({
+            where: {
+                id:userId
+            }
+            }
+        )
+        if (!result){
+            return {
+                status: 'error',
+                message: `Не вдалося видалити користувача ${userId}!`,
+            }
+
+        }
+        return {
+            status: 'success',
+            message: `Користувача ${userId} видалено!`,
             data: result
         }
     }
