@@ -3,6 +3,7 @@ import {TypeUser} from "../types/user";
 import {validateUserLogin} from "../validate/user/validateUserLogin";
 import {PrismaService} from "../prisma/prisma.service";
 import {IResponse} from "../interfaces/response";
+import {comparePasswords, hashPassword} from "../utils/hashPass";
 
 
 @Injectable()
@@ -17,7 +18,7 @@ export class UserService {
                 message: 'Користувач з таким логіном уже існує!'
             }
         }
-        if (userData.id || userData.update_dt) {
+        if (userData.id || userData.update_dt ) {
             return {
                 status: 'error',
                 message: 'id && update_dt при створенні не передається'
@@ -91,16 +92,38 @@ export class UserService {
                 message: 'Користувач з таким логіном уже існує!'
             }
         }
-        if (userData.create_dt) {
+        if (userData.create_dt || userData.password) {
             return {
                 status: 'error',
-                message: 'create_dt при створенні не передається'
+                message: 'create_dt && password при оновленні не передається'
             }
+        }
+        if (userData.old_password && userData.new_password){
+            const user = await this.prisma.modelUser.findFirst({
+                where:{
+                    id:userId
+                }
+            })
+            if (user){
+                const hash = user.password!
+                // Порівнюємо старий пароль (який ввів користувач) з хешем у БД
+                const isMatch = await comparePasswords(userData.old_password, hash);
+                if (!isMatch) {
+                    return {
+                        status: 'error',
+                        message: 'Старий пароль не співпадає',
+                    };
+                }
+            }
+        }
+        if (userData.new_password) {
+            userData.password = await hashPassword(userData.new_password);
+            delete userData.new_password; // Щоб не зберігати "новий пароль" у базі окремо
+            delete userData.old_password; // Щоб не зберігати "новий пароль" у базі окремо
         }
 
         let currentTime = Date.now();
         userData.update_dt = new Date(currentTime);
-
         const result = await this.prisma.modelUser.update(
             {
                 where :{

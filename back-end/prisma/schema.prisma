@@ -17,7 +17,7 @@ datasource db {
 model ModelUser {
   id        Int             @id @default(autoincrement())
   login     String
-  password  String
+  password  String?
   create_dt DateTime?
   update_dt DateTime?
   meta      ModelUserMeta[]
