@@ -83,4 +83,41 @@ export class UserService {
             data: result
         }
     }
+
+    async updateUser(userId:number,userData: TypeUser): Promise<IResponse> {
+        if (!await validateUserLogin(this.prisma, userData.login, userId)) {
+            return {
+                status: 'error',
+                message: 'Користувач з таким логіном уже існує!'
+            }
+        }
+        if (userData.create_dt) {
+            return {
+                status: 'error',
+                message: 'create_dt при створенні не передається'
+            }
+        }
+
+        let currentTime = Date.now();
+        userData.update_dt = new Date(currentTime);
+
+        const result = await this.prisma.modelUser.update(
+            {
+                where :{
+                    id:userId,
+                },
+                data:userData
+            }
+        );
+        if(!result){
+            return {
+                status: 'error',
+                message: `Не вдалося оновити користувача ${userId}`,
+            }
+        }
+        return {
+            status: 'success',
+            message: `Користувача з id ${userId} оновлено!`,
+        }
+    }
 }
