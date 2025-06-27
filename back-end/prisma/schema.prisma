@@ -15,11 +15,12 @@ datasource db {
 }
 
 model ModelUser {
-  id        Int       @id @default(autoincrement())
+  id        Int             @id @default(autoincrement())
   login     String
   password  String
   create_dt DateTime?
   update_dt DateTime?
+  meta      ModelUserMeta[]
 }
 
 model ModelUserMeta {
@@ -27,4 +28,6 @@ model ModelUserMeta {
   main_id Int
   key     String
   value   String
+
+  user ModelUser @relation(fields: [main_id], references: [id], onDelete: Cascade)
 }
