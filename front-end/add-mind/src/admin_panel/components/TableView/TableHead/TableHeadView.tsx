@@ -13,6 +13,9 @@ export default function TableHeadView({tableKey, head}: TableHeadViewProps) {
                 {Object.entries(head).map(([key, label]) => (
                     <th key={key}>{label}</th>
                 ))}
+                <th>
+                    Керування
+                </th>
             </tr>
         </thead>
     )

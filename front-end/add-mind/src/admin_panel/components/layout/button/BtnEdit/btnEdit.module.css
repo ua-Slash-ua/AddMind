@@ -1,0 +1,16 @@
+.table_body_btn_edit{
+    background-color: #68c0ff;
+    padding: 0.05vh 1vw;
+    margin: 1vh 1vw;
+    border: 3px solid #0066ab;
+    border-radius: 10px;
+    color: black;
+    font-weight: bold;
+    transition: all 0.2s ease; /* плавна анімація */
+}
+
+.table_body_btn_edit:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    background-color: #b9e0fe;
+}

@@ -1,0 +1,16 @@
+.table_body_btn_remove{
+    background-color: #ff6868;
+    padding: 0.05vh 1vw;
+    margin: 1vh 1vw;
+    border: 3px solid #a30101;
+    border-radius: 10px;
+    color: black;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.table_body_btn_remove:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    background-color: #feb9b9;
+}
