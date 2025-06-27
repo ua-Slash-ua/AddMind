@@ -11,7 +11,7 @@ export class UserService {
     }
 
     async createUser(userData: TypeUser): Promise<IResponse> {
-        if (!validateUserLogin(userData)) {
+        if (!await validateUserLogin(this.prisma, userData.login)) {
             return {
                 status: 'error',
                 message: 'Користувач з таким логіном уже існує!'
@@ -44,7 +44,11 @@ export class UserService {
     }
 
     async getAllUser():Promise<IResponse>{
-        const result = await this.prisma.modelUser.findMany();
+        const result = await this.prisma.modelUser.findMany({
+            orderBy: {
+                id: 'desc'
+            },
+        });
         if (!result){
             return {
                 status: 'error',

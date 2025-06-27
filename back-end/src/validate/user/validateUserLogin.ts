@@ -1,6 +1,11 @@
 import {TypeUser} from "../../types/user";
+import {PrismaService} from "../../prisma/prisma.service";
 
-export function validateUserLogin(user:TypeUser):boolean{
-    return true
-
+export async function validateUserLogin(prisma: PrismaService, userLogin: string): Promise<boolean> {
+    const result = await prisma.modelUser.findFirst({
+        where: {
+            login: userLogin,
+        },
+    });
+    return !result
 }
