@@ -25,7 +25,7 @@ export default async function TableBodyView({tableKey, head}: TableHeadViewProps
                     </td>
                 ))}
                 <td>
-                    <BtnEdit/>
+                    <BtnEdit key={`btnEdit_${user.id}`} id={user.id} />
                     <BtnRemove key="btnRemove" func={removeUser} id={user.id} />
                 </td>
             </tr>
