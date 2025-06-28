@@ -1,9 +1,10 @@
 import {Injectable} from '@nestjs/common';
-import {TypeUser} from "../types/user";
+import {TypeUser, UserFilter} from "../types/user";
 import {validateUserLogin} from "../validate/user/validateUserLogin";
 import {PrismaService} from "../prisma/prisma.service";
 import {IResponse} from "../interfaces/response";
 import {comparePasswords, hashPassword} from "../utils/hashPass";
+import {buildUserFilter} from "../validate/user/filterUserGet";
 
 
 @Injectable()
@@ -44,8 +45,10 @@ export class UserService {
         }
     }
 
-    async getAllUser():Promise<IResponse>{
+    async getAllUser(filter?:UserFilter):Promise<IResponse>{
+        let where = buildUserFilter(filter)
         const result = await this.prisma.modelUser.findMany({
+            where,
             orderBy: {
                 id: 'desc'
             },

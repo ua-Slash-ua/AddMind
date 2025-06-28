@@ -10,7 +10,7 @@ export default function EditUserPage({params}: EditUserPageProps) {
     const id = parseInt(params.id, 10);
 
     return (<>
-        <EditBlock/>
+        <EditBlock key = {id} ids ={[id]}/>
         <div>Edit user #{id}</div>
     </>);
 }

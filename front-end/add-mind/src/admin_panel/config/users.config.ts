@@ -13,3 +13,10 @@ export type userType  = {
     password: string,
     create_dt: Date
 }
+
+export interface UserFilter {
+    loginStartsWith?: string;
+    ids?: number[];
+    updateFrom?: Date;
+    updateTo?: Date;
+}
