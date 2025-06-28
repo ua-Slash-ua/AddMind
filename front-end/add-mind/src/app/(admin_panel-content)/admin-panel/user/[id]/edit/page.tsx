@@ -1,14 +1,16 @@
+// app/admin-panel/user/[id]/edit/page.tsx
+
+import EditBlock from "@/admin_panel/components/EditBlock/EditBlock";
+
 interface EditUserPageProps {
-    params: {
-        id: string;
-    };
+    params: { id: string };
 }
 
-export default async function EditUserPage({ params }: EditUserPageProps) {
-    const id = params.id;
+export default function EditUserPage({params}: EditUserPageProps) {
+    const id = parseInt(params.id, 10);
 
-    // Тепер можна робити запит до БД на сервері, щоб отримати дані користувача
-    // const user = await getUserById(id);
-
-    return <div>Edit user {id}</div>;
+    return (<>
+        <EditBlock/>
+        <div>Edit user #{id}</div>
+    </>);
 }
