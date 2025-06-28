@@ -118,8 +118,8 @@ export class UserService {
         }
         if (userData.new_password) {
             userData.password = await hashPassword(userData.new_password);
-            delete userData.new_password; // Щоб не зберігати "новий пароль" у базі окремо
-            delete userData.old_password; // Щоб не зберігати "новий пароль" у базі окремо
+            delete userData.new_password;
+            delete userData.old_password;
         }
 
         let currentTime = Date.now();
