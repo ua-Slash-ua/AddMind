@@ -1,9 +1,9 @@
+'use client'
 import styles from './TableBodyView.module.css'
 import {userType} from "@/admin_panel/config/users.config";
 import {formatValueAuto} from "@/admin_panel/assets/formatValue";
-import BtnRemove from "@/admin_panel/components/layout/button/BtnRemove/BtnRemove";
-import BtnEdit from "@/admin_panel/components/layout/button/BtnEdit/BtnEdit";
-import {removeUser} from "@/admin_panel/api/user/remove";
+import {AlertMessage} from "@/admin_panel/components/AlertMessage/AlertMessage";
+import {useEffect} from "react";
 
 
 interface TableHeadViewProps {
@@ -12,8 +12,15 @@ interface TableHeadViewProps {
     data: userType[]
 }
 
-export default async function TableBodyView({tableKey, head, data}: TableHeadViewProps) {
+export default function TableBodyView({tableKey, head, data}: TableHeadViewProps) {
+    useEffect(() => {
+        if (data.length > 0) {
+            AlertMessage(`Дані <_${tableKey}_> завантажено!`,'success');
 
+        }else {
+            AlertMessage(`Помилка завантаження завантаження <_${tableKey}_> !`,'error');
+        }
+    }, [data]);
     return (
         <tbody className={styles.table_body_container}>
         {data.map((user) => (
@@ -24,8 +31,6 @@ export default async function TableBodyView({tableKey, head, data}: TableHeadVie
                     </td>
                 ))}
                 <td>
-                    <BtnEdit key={`btnEdit_${user.id}`} id={user.id}/>
-                    <BtnRemove key="btnRemove" func={removeUser} id={user.id}/>
                 </td>
             </tr>
         ))}
