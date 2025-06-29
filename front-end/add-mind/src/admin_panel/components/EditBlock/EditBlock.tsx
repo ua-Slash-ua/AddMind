@@ -1,15 +1,14 @@
 import {getAllUsers} from "@/admin_panel/api/user/getAll";
 type EditBlockProps = {
-    key: number;
     ids: number[];
 };
-export default async function EditBlock({key, ids}:EditBlockProps) {
+export default async function EditBlock({ ids}:EditBlockProps) {
 
     let filter ={ids: ids}
     let userData = await getAllUsers(filter)
     userData = userData.data[0]
     return (
-        <div key={key}>
+        <div >
             Користувач ID № {userData.id} <br/>
             Login: {userData.login}<br/>
             Date Created: {userData.create_dt}<br/>
