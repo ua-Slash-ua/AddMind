@@ -14,7 +14,6 @@ interface TableHeadViewProps {
 
 export default async function TableBodyView({tableKey, head, data}: TableHeadViewProps) {
 
-
     return (
         <tbody className={styles.table_body_container}>
         {data.map((user) => (

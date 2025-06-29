@@ -1,7 +1,9 @@
+
 import styles from './tableView.module.css'
 import TableHeadView from "@/admin_panel/components/TableView/TableHead/TableHeadView";
 import TableBodyView from "@/admin_panel/components/TableView/TableBody/TableBodyView";
 import {userType} from "@/admin_panel/config/users.config";
+import {AlertMessage} from "@/admin_panel/components/AlertMessage/AlertMessage";
 
 type TableViewProps = {
     tableKey: string; // або інший тип, який потрібен
@@ -10,6 +12,7 @@ type TableViewProps = {
 };
 
 export default function TableView({ tableKey, head, data}:TableViewProps) {
+
     return (
         <table className={styles.table_container}>
             <TableHeadView tableKey={tableKey} head={head} />
